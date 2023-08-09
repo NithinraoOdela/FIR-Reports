@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Police Department - FIRs and Case Information</title>
+</head>
+<body>
+    <div class="navbar">
+        <img src="https://digitalpolice.gov.in/images/indian_emblem.png" alt="Police Logo">
+        <h1 class="logo-title">Digital Police</h1>
+        <form method="GET", action="{{ url_for('file_case') }}">
+            <button class="button">File a case</button>
+        </form>
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchInput" placeholder="Enter Case ID">
+            <button class="search-button" id="searchButton"  onclick="trigger_func()">Search</button>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th class="center-heading">Case ID</th>
+            <th class="center-heading">Name</th>
+            <th class="center-heading">Mobile</th>
+            <th class="center-heading">Date-of-registration</th>
+            <th class="center-heading">Case Type</th>
+            <th class="center-heading">Case Details</th>
+        </tr>
+       {% for fir in fir_list %}
+       <tr class="case_element">
+        <td class="caseId">{{ fir['id'] }}</td>
+        <td>{{ fir['Name'] }}</td>
+        <td>{{ fir['Mobile'] }}</td>
+        <td>{{ fir['Date_of_registration'] }}</td>
+        <td>{{ fir['Case_Type'] }}</td>
+        <td>{{ fir['Case_Details'] }}</td>
+       </tr>
+       {% endfor %}
+    </table>
+
+    <script src="..\static\js\script.js"></script>
+</body>
+</html>

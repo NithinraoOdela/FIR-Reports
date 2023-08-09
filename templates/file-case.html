@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIR</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form-styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>First Information Report</h1>
+    
+    <form method="POST" id="complaint-form", action="{{ url_for('file_case') }}">
+      <label for="name" >Name: <span class="required-field"></span></label>
+      <input type="text" id="name" name="name" required><br>
+      
+      <label for="mobile">Mobile: <span class="required-field"></span></label>
+      <input type="tel" id="mobile" name="Mobile" pattern="[6789][0-9]{9}" required>
+      <span class="note">(Valid Indian mobile number format: 9XXXXXXXXX)</span><br>
+
+      <label for="date">Date: <span class="required-field"></span></label>
+<input type="text" id="date" name="Date_of_registration" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" required>
+<span class="note">(Valid date format: DD/MM/YYYY)</span><br>
+
+      
+      
+      <label for="Case_Type">Complaint Type: <span class="required-field"></span></label>
+      <input type="text" id="Case_Type" name="Case_Type" required><br>
+      
+      <label for="Case_Details">Complaint Details: <span class="required-field"></span></label>
+      <textarea id="Case_Details" name="Case_Details" rows="4" required></textarea><br> 
+        
+      <button type="submit" id="popupButton" onclick="savecache">Submit</button>  
+      <button type="reset">Reset</button>
+      
+    </form>
+  </div>
+
+  <script src="../static/js/index.js"></script>
+  <script>
+    document.getElementById("popupButton").addEventListener("click", function() {
+      alert("Your FIR submitted successfully");
+    });
+  </script>
+</body>
+</html>
+
+
